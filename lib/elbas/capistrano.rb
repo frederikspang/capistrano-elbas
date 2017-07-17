@@ -15,7 +15,7 @@ def autoscale(groupname, *args)
 
   asg_instances.each do |asg_instance|
     if asg_instance.health_status != 'Healthy'
-      p "ELBAS: Skipping unhealthy instance #{instance.id}"
+      p "ELBAS: Skipping unhealthy instance #{asg_instance.id}"
     else
       ec2_instance = ec2_resource.instance(asg_instance.id)
       hostname = ec2_instance.public_dns_name || ec2_instance.private_ip_address
